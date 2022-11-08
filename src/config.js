@@ -3,7 +3,7 @@ require('dotenv').config()
 const env = (name, fallback = '') => process.env[name] || fallback
 
 module.exports = {
-  PORT: env('PORT', 3000),
+  PORT: env('PORT', 4000),
   DEBUG_MESSAGES: JSON.parse(env('DEBUG_MESSAGES', 'false')),
 
   ETH_NODE_URL: env('ETH_NODE_URL', 'https://ropsten.infura.io'),

@@ -118,6 +118,12 @@ p, h3 {
 	cursor: pointer;
 }
 
+.home_content_claim_button__authenticated:hover {
+	background-color: #485563;
+    transition: .1s ease-in-out;
+	cursor: pointer;
+}
+
 .home_content_invalid_address_button__authenticated:disabled, .home_content_invalid_address_button__authenticated[disabled] {
 	display: block;
 	width: 100%;
@@ -140,6 +146,12 @@ p, h3 {
     border-radius: 5px;
     border: none;
     font-size: 15px;
+    cursor: pointer;
+    transition: .1s ease-in-out;
+}
+
+.sign_in_button__unauthenticated:hover {
+    background-color: #485563;
     cursor: pointer;
     transition: .1s ease-in-out;
 }

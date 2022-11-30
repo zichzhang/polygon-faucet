@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import Web3 from "web3";
-import getDrip from './api/getDrip';
 
 const GoogleOauth = () => {
 
   const [userEmail, setUserEmail] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [ethAddress, setEthAddress] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const clientId = '327818087416-aej98sjlsa9tidnahdss2us8q7er9rj8.apps.googleusercontent.com';
 
@@ -21,6 +21,23 @@ const GoogleOauth = () => {
     };
     gapi.load('client:auth2', initClient);
   });
+
+  async function getDrip(address) {
+    setIsSending(true)
+    console.log("Getting drip...");
+
+    const response = await fetch("http://localhost:4000/request/eth/" + address, { method: 'GET' })
+
+    if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        throw new Error(message);
+    }
+    console.log("Success!")
+    setIsSending(false);
+
+    return "Success!";
+}
+
 
   const onSuccess = (res) => {
     setIsAuthenticated(true);
@@ -49,7 +66,7 @@ const GoogleOauth = () => {
             <input className='home_content_input_container__authenticated' type='text' placeholder='0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B' value={ethAddress} onChange={(e) => { setEthAddress(e.target.value) }}></input>
             {Web3.utils.isAddress(ethAddress) ? (
               <button className='home_content_claim_button__authenticated' onClick={() => getDrip(ethAddress)}>
-                Claim
+                {isSending ? <>Sending ..</> : <>Claim</>}
               </button>
             ) : (
               (ethAddress === '') ? (

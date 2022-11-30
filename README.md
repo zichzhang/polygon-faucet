@@ -1,28 +1,15 @@
-# Nano Faucet
+# Polygon Faucet
 
-A minimal faucet API for Ethereum and ERC20 tokens.
+A faucet to fund a wallet with $MATIC tokens.
 
-## Why
+## Preview (to be deployed)
 
-You have developed a nice dApp. And you want people to try it. But people don't want to bother getting test ether. You know there exists [http://faucet.ropsten.be:3001](http://faucet.ropsten.be:3001/), but it's public and supports only Ropsten. Also, you know you could deploy your own [https://github.com/sponnet/locals-faucetserver](https://github.com/sponnet/locals-faucetserver), but it requires you to set up a Firebase account, and you're too lazy (aren't we all <3).
+Google OAuth Sign In       |  Authenticated
+:-------------------------:|:-------------------------:
+<img width="1440" alt="Screen Shot 2022-11-07 at 10 20 43 PM" src="https://user-images.githubusercontent.com/65128992/200467634-050b4df7-3cad-468a-87d9-cd8989c3315b.png"> | <img width="1440" alt="Screen Shot 2022-11-07 at 10 20 59 PM" src="https://user-images.githubusercontent.com/65128992/200467664-dacc5462-7506-4591-b114-0aeafadafb63.png">
 
-So you deploy this super micro nano faucet in no time, add some test ether and / or your ERC20 tokens to it, and start rolling! Now, your users can start testing your dApp seamlessly.
 
-So, the intended use case is providing some test ether and / or your ERC20 token to your dApp users automatically. It's not intended for wide audience use. Ideally, your Front End would generate a new wallet for the user, then make an HTTP request to your faucet and get a small amount (0.01 ETH or whatevs) so the user can call methods on your smart contract and pay for gas.
-
-Also, ideally, you'd create another layer on top of this faucet that provides authentication, rate limiting or other niceties. Imagine having a publicly available "faucet gateway" that makes sure that the faucet drips only once every minute, and this faucet service behind it, being only accessible by the gateway.
-
-## Quick Rundown
-
-1. Self hosted Ethereum + ERC20 faucet
-2. Supports whichever Ethereum test network, over Http or Web Sockets
-3. You don't need a local GETH node, Infura is fine
-4. Supports any ERC20 token
-5. No fuss deployment - you only need NodeJS
-6. Super simple configuration
-7. Exposed as an API, no Front End
-8. No queuing - sends ether right away
-9. Doesn't allow abuse - it only allows you to get one dose until it runs out
+* Note: frontend design was inspired by Anish Agnihotri
 
 ## Installation
 
@@ -31,25 +18,6 @@ Also, ideally, you'd create another layer on top of this faucet that provides au
 3. Send some ether to the wallet specified in config
 4. If you turn on the ERC20 module, send some of your tokens to the wallet specified in config
 5. `npm start` (starts the server locally)
-
-### Note
-
-- The easiest way is to use an automated NodeJS deployment solution like Now or Heroku
-- If you're deploying to a VPS, you'll need to configure your server to pass requests to the Node app (reverse proxy)
-
-### Now.sh Deployment Example
-
-Now.sh is a service allowing you to host a few of your node apps for free. It's really cool because it gives you a unique url as a subdomain on `now.sh`, and you have automatic SSL through them, which is really helpful when developing small apps and just wanting to show them off quickly.
-
-You can deploy this repo to Now by running:
-
-```sh
-now -p --dotenv
-```
-
-The `-p` flag tell Now to deploy your app as public - this is the limit for free accounts.
-
-The `--dotenv` option is really important because it tells Now to start your node app with your `.env` config.
 
 ## Configuration
 

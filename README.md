@@ -103,7 +103,7 @@ Returns:
 
 Allows you to request Ether to be sent to the `address`.
 
-The request will be open until the transaction is mined, so don't be alarmed if it takes 30 sec - 1 min to finish. A loading sign on the confirm button will be displayed until request is finished.
+The request will be open until the transaction is mined, so don't be alarmed if it takes 30 sec - 1 min to finish. A loading sign on the confirm button will be displayed until request is complete.
 
 Parameters:
 
@@ -134,7 +134,7 @@ Returns:
 
 Allows you to request your ERC20 token to be sent to the `address`.
 
-The request will be open until the transaction is mined, so don't be alarmed if it takes 30 sec - 1 min to finish. When calling it from front end, make sure to either do it in background and notify the user once it's complete, or to display some cat gifs while loading.
+The request will be open until the transaction is mined, so don't be alarmed if it takes 30 sec - 1 min to finish. A loading sign on the confirm button will be displayed until request is complete.
 
 Parameters:
 

@@ -19,5 +19,3 @@ app.use('/', api())
 app.server.listen(config.PORT, () => {
   console.log(`Started on port ${app.server.address().port}`)
 })
-
-module.exports = app;
